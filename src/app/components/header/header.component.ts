@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -11,13 +12,22 @@ export class HeaderComponent implements OnInit {
   showMoviesList = false;
   username? : string;
 
-  constructor() { }
+  constructor(private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if(this.isLoggedIn){
+      const user = this.tokenStorageService.getUser();
+
+      this.showMoviesList = true;
+      this.username = user.username;
+    }
   }
 
   logout(): void {
-    
+    this.tokenStorageService.signOut();
+    window.location.reload();
   }
 
 }

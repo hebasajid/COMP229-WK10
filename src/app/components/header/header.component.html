@@ -26,12 +26,13 @@
             <a class="nav-link" routerLinkActive="active" aria-current="page" href="/contact" routerLink="/contact"><i class="fa-solid fa-envelopes-bulk fa-lg"></i> Contact</a>
           </li> 
   
-          <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" aria-current="page" href="/movie-list" routerLink="/movie-list"><i class="fa-solid fa-table-list fa-lg"></i> Movies List</a>
-          </li> 
+          
 
 
           <ng-container *ngIf="isLoggedIn else showLoginTemplate">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" aria-current="page" href="/movie-list" routerLink="/movie-list"><i class="fa-solid fa-table-list fa-lg"></i> Movies List</a>
+            </li> 
             <li class="nav-item">
                 <a class="nav-link" routerLinkActive="active" aria-current="page" (click)="logout()" ><i class="fa-solid fa-right-from-bracket fa-lg"></i> Logout</a>
               </li>
